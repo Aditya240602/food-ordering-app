@@ -1,0 +1,117 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  customer_id String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  email       String?
+  phone_number String?
+  status      String?
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  orders      Order[]
+}
+
+model Restaurant {
+  restaurant_id   String     @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  address         String?
+  cuisine_type    String?
+  operating_hours String?
+  status          String     @default("active")
+  image_url       String?
+  rating          Float      @default(4.0)
+  is_canteen      Boolean    @default(false)
+  created_at      DateTime   @default(now())
+  updated_at      DateTime   @updatedAt
+  menu_items      MenuItem[]
+  orders          Order[]
+}
+
+model MenuItem {
+  item_id       String      @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  description   String?
+  price         Float
+  restaurant_id String      @db.ObjectId
+  is_available  Boolean     @default(true)
+  image_url     String?
+  category      String?
+  created_at    DateTime    @default(now())
+  updated_at    DateTime    @updatedAt
+  restaurant    Restaurant  @relation(fields: [restaurant_id], references: [restaurant_id])
+  order_items   OrderItem[]
+}
+
+model Order {
+  order_id      String           @id @default(auto()) @map("_id") @db.ObjectId
+  order_date    DateTime         @default(now())
+  total_amount  Float
+  status        String           @default("pending")
+  order_type    String           // "delivery" or "takeaway"
+  customer_id   String           @db.ObjectId
+  restaurant_id String           @db.ObjectId
+  driver_id     String?          @db.ObjectId
+  notes         String?
+  created_at    DateTime         @default(now())
+  updated_at    DateTime         @updatedAt
+  customer      Customer         @relation(fields: [customer_id], references: [customer_id])
+  restaurant    Restaurant       @relation(fields: [restaurant_id], references: [restaurant_id])
+  driver        DeliveryDriver?  @relation(fields: [driver_id], references: [driver_id])
+  order_items   OrderItem[]
+  deliveries    Delivery[]
+}
+
+model OrderItem {
+  order_item_id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  order_id             String   @db.ObjectId
+  item_id              String   @db.ObjectId
+  quantity             Int
+  price_at_order_time  Float
+  customizations       String?
+  special_instructions String?
+  created_at           DateTime @default(now())
+  updated_at           DateTime @updatedAt
+  order                Order    @relation(fields: [order_id], references: [order_id])
+  menu_item            MenuItem @relation(fields: [item_id], references: [item_id])
+}
+
+model Delivery {
+  delivery_id             String          @id @default(auto()) @map("_id") @db.ObjectId
+  order_id                String          @db.ObjectId
+  driver_id               String          @db.ObjectId
+  pickup_time             DateTime?
+  estimated_delivery_time DateTime?
+  actual_delivery_time    DateTime?
+  delivery_status         String          @default("pending")
+  delivery_fee            Float?
+  delivery_address        String?
+  created_at              DateTime        @default(now())
+  updated_at              DateTime        @updatedAt
+  order                   Order           @relation(fields: [order_id], references: [order_id])
+  driver                  DeliveryDriver  @relation(fields: [driver_id], references: [driver_id])
+}
+
+model DeliveryDriver {
+  driver_id            String     @id @default(auto()) @map("_id") @db.ObjectId
+  name                 String
+  phone_number         String?
+  vehicle_type         String?
+  vehicle_number       String?
+  license_number       String?
+  availability_status  String     @default("available")
+  current_location_lat Float?
+  current_location_lng Float?
+  created_at           DateTime   @default(now())
+  updated_at           DateTime   @updatedAt
+  deliveries           Delivery[]
+  orders               Order[]
+}
