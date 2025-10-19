@@ -99,27 +99,42 @@ export default function CanteenPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-orange-100">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Canteen Header */}
-      <div className="bg-gradient-to-r from-orange-500 to-yellow-500 text-white">
-        <div className="container mx-auto px-4 py-12">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center"
-          >
-            <div className="text-6xl mb-4">🍜</div>
-            <h1 className="text-5xl font-bold mb-3">NSUT Canteen</h1>
-            <p className="text-xl text-orange-100 mb-2">
-              Quick Bites, Great Taste!
-            </p>
-            <p className="text-orange-100">
-              🕐 Open 8:00 AM - 6:00 PM | 📍 NSUT Campus, Dwarka
-            </p>
-            <div className="mt-4 inline-block bg-orange-700 px-4 py-2 rounded-full">
-              <span className="font-semibold">⚡ Takeaway Only</span>
-            </div>
-          </motion.div>
+      <div className="relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-gradient-to-r from-orange-500/20 to-yellow-500/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float"></div>
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
+        </div>
+        
+        <div className="relative bg-gradient-to-r from-orange-600 via-yellow-500 to-orange-700 text-white py-20">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <div className="w-24 h-24 glass-effect-light rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <img 
+                  src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80"
+                  alt="Canteen Food"
+                  className="w-16 h-16 rounded-xl object-cover"
+                />
+              </div>
+              <h1 className="text-5xl md:text-6xl font-display font-bold mb-4">NSUT Canteen</h1>
+              <p className="text-xl text-orange-100 mb-4">
+                Quick Bites, Great Taste!
+              </p>
+              <p className="text-orange-100 mb-6">
+                🕐 Open 8:00 AM - 6:00 PM | 📍 NSUT Campus, Dwarka
+              </p>
+              <div className="inline-block glass-effect-light px-6 py-3 rounded-full">
+                <span className="font-semibold text-lg">⚡ Takeaway Only</span>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
 
@@ -133,8 +148,8 @@ export default function CanteenPage() {
             className="mb-12"
           >
             <div className="flex items-center gap-3 mb-6">
-              <Utensils className="w-8 h-8 text-orange-600" />
-              <h2 className="text-4xl font-bold text-gray-900">Snacks</h2>
+              <Utensils className="w-8 h-8 text-orange-400" />
+              <h2 className="text-4xl font-display font-bold text-white">Snacks</h2>
             </div>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -145,36 +160,35 @@ export default function CanteenPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-orange-200 hover:border-orange-400 transition-all"
+                  className="dark-surface rounded-xl shadow-lg overflow-hidden border-2 border-orange-500/20 hover:border-orange-400 transition-all"
                 >
-                  {/* Item Icon/Image */}
-                  <div className="h-32 bg-gradient-to-br from-orange-300 to-yellow-300 flex items-center justify-center text-5xl">
-                    {item.name.includes('Potato') ? '🥔' :
-                     item.name.includes('Chowmein') ? '🍜' :
-                     item.name.includes('Rice') ? '🍚' :
-                     item.name.includes('Samosa') ? '🥟' :
-                     item.name.includes('Patties') ? '🥙' :
-                     item.name.includes('Bread') ? '🍞' :
-                     item.name.includes('Maggi') ? '🍝' : '🍽️'}
+                  {/* Item Image */}
+                  <div className="h-32 relative overflow-hidden">
+                    <img 
+                      src={`https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80`}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   </div>
 
                   <div className="p-4">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
+                    <h3 className="text-lg font-bold text-white mb-1">
                       {item.name}
                     </h3>
                     
                     {item.description && (
-                      <p className="text-xs text-gray-600 mb-3 line-clamp-2">
+                      <p className="text-xs text-gray-300 mb-3 line-clamp-2">
                         {item.description}
                       </p>
                     )}
 
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-2xl font-bold text-orange-600">
+                      <span className="text-2xl font-bold text-orange-400">
                         ₹{item.price}
                       </span>
                       {!item.is_available && (
-                        <span className="text-xs text-red-600 font-semibold bg-red-50 px-2 py-1 rounded">
+                        <span className="text-xs text-red-400 font-semibold bg-red-500/20 px-2 py-1 rounded">
                           Out of Stock
                         </span>
                       )}
@@ -183,28 +197,28 @@ export default function CanteenPage() {
                     {item.is_available && (
                       <div className="space-y-2">
                         {/* Quantity Selector */}
-                        <div className="flex items-center justify-center border-2 border-orange-300 rounded-lg bg-orange-50">
+                        <div className="flex items-center justify-center border-2 border-orange-400/30 rounded-lg bg-orange-500/10">
                           <button
                             onClick={() => updateQuantity(item.item_id, -1)}
-                            className="p-2 hover:bg-orange-100 transition-colors"
+                            className="p-2 hover:bg-orange-500/20 transition-colors"
                           >
-                            <Minus className="w-4 h-4 text-orange-600" />
+                            <Minus className="w-4 h-4 text-orange-400" />
                           </button>
-                          <span className="px-4 font-bold text-orange-600">
+                          <span className="px-4 font-bold text-orange-400">
                             {quantities[item.item_id] || 1}
                           </span>
                           <button
                             onClick={() => updateQuantity(item.item_id, 1)}
-                            className="p-2 hover:bg-orange-100 transition-colors"
+                            className="p-2 hover:bg-orange-500/20 transition-colors"
                           >
-                            <Plus className="w-4 h-4 text-orange-600" />
+                            <Plus className="w-4 h-4 text-orange-400" />
                           </button>
                         </div>
                         
                         {/* Add Button */}
                         <button
                           onClick={() => handleAddToCart(item)}
-                          className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded-lg transition-colors flex items-center justify-center gap-2"
+                          className="w-full btn-canteen flex items-center justify-center gap-2"
                         >
                           <ShoppingBag className="w-4 h-4" />
                           Add to Order

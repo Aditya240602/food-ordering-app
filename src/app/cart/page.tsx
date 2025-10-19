@@ -37,30 +37,34 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-pink-50 flex items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center"
+          className="text-center max-w-md mx-auto px-6"
         >
-          <div className="text-9xl mb-6">🛒</div>
-          <h2 className="text-3xl font-bold text-gray-800 mb-3">
+          <div className="w-32 h-32 bg-gradient-to-br from-orange-400 to-red-400 rounded-full flex items-center justify-center text-6xl mx-auto mb-8 animate-float">
+            🛒
+          </div>
+          <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">
             Your Cart is Empty
           </h2>
-          <p className="text-gray-600 mb-8">
-            Add some delicious items to get started!
+          <p className="text-gray-600 mb-8 text-lg">
+            Add some delicious items to get started on your culinary journey!
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => router.push('/restaurant')}
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+              className="btn-primary px-8 py-4 text-lg flex items-center justify-center gap-3"
             >
+              <Utensils className="w-5 h-5" />
               Browse Restaurants
             </button>
             <button
               onClick={() => router.push('/canteen')}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+              className="btn-canteen px-8 py-4 text-lg flex items-center justify-center gap-3"
             >
+              <Coffee className="w-5 h-5" />
               Visit Canteen
             </button>
           </div>
@@ -70,35 +74,35 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-pink-50">
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-12"
         >
           <button
             onClick={() => router.back()}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4"
+            className="flex items-center gap-3 text-gray-600 hover:text-orange-600 mb-6 transition-colors font-medium"
           >
             <ArrowLeft className="w-5 h-5" />
             Continue Shopping
           </button>
           
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-2">
+              <h1 className="text-5xl font-display font-bold gradient-text mb-3">
                 Your Cart
               </h1>
-              <p className="text-gray-600">
-                Ordering from <span className="font-semibold">{restaurantName}</span>
+              <p className="text-gray-600 text-lg">
+                Ordering from <span className="font-semibold text-orange-600">{restaurantName}</span>
               </p>
             </div>
             
             <button
               onClick={handleClearCart}
-              className="text-red-600 hover:text-red-700 font-semibold flex items-center gap-2"
+              className="text-red-600 hover:text-red-700 font-semibold flex items-center gap-2 px-4 py-2 rounded-xl hover:bg-red-50 transition-all"
             >
               <Trash2 className="w-5 h-5" />
               Clear Cart
@@ -108,51 +112,51 @@ export default function CartPage() {
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Cart Items */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-2 space-y-6">
             {items.map((item, index) => (
               <motion.div
                 key={item.id}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all border border-white/20"
               >
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-8">
                   {/* Item Image/Icon */}
-                  <div className="w-24 h-24 bg-gradient-to-br from-orange-300 to-red-300 rounded-lg flex items-center justify-center text-4xl flex-shrink-0">
+                  <div className="w-28 h-28 bg-gradient-to-br from-orange-400 to-red-400 rounded-2xl flex items-center justify-center text-5xl flex-shrink-0 shadow-lg">
                     🍽️
                   </div>
 
                   {/* Item Details */}
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">
+                    <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">
                       {item.name}
                     </h3>
                     {item.category && (
-                      <p className="text-sm text-gray-500 mb-2">{item.category}</p>
+                      <p className="text-sm text-orange-600 font-medium mb-3">{item.category}</p>
                     )}
-                    <p className="text-lg font-semibold text-red-600">
+                    <p className="text-xl font-bold text-orange-600">
                       ₹{item.price} × {item.quantity} = ₹{(item.price * item.quantity).toFixed(2)}
                     </p>
                   </div>
 
                   {/* Quantity Controls */}
-                  <div className="flex flex-col items-end gap-3">
-                    <div className="flex items-center border-2 border-gray-300 rounded-lg bg-gray-50">
+                  <div className="flex flex-col items-end gap-4">
+                    <div className="flex items-center border-2 border-orange-200 rounded-xl bg-orange-50">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="p-2 hover:bg-gray-100 transition-colors"
+                        className="p-3 hover:bg-orange-100 transition-colors rounded-l-xl"
                       >
-                        <Minus className="w-4 h-4" />
+                        <Minus className="w-5 h-5 text-orange-600" />
                       </button>
-                      <span className="px-4 font-bold text-gray-900 min-w-[3rem] text-center">
+                      <span className="px-6 font-bold text-gray-900 min-w-[4rem] text-center text-lg">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="p-2 hover:bg-gray-100 transition-colors"
+                        className="p-3 hover:bg-orange-100 transition-colors rounded-r-xl"
                       >
-                        <Plus className="w-4 h-4" />
+                        <Plus className="w-5 h-5 text-orange-600" />
                       </button>
                     </div>
 
@@ -161,7 +165,7 @@ export default function CartPage() {
                         removeItem(item.id);
                         toast.success('Item removed from cart');
                       }}
-                      className="text-red-600 hover:text-red-700 text-sm font-semibold flex items-center gap-1"
+                      className="text-red-600 hover:text-red-700 text-sm font-semibold flex items-center gap-2 px-4 py-2 rounded-xl hover:bg-red-50 transition-all"
                     >
                       <Trash2 className="w-4 h-4" />
                       Remove
@@ -178,26 +182,26 @@ export default function CartPage() {
             animate={{ opacity: 1, x: 0 }}
             className="lg:col-span-1"
           >
-            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            <div className="bg-white rounded-2xl shadow-xl p-8 sticky top-8 border border-white/20">
+              <h2 className="text-3xl font-display font-bold text-gray-900 mb-8">
                 Order Summary
               </h2>
 
-              <div className="space-y-4 mb-6">
-                <div className="flex justify-between text-gray-700">
-                  <span>Items ({getTotalItems()})</span>
-                  <span className="font-semibold">₹{getTotalPrice().toFixed(2)}</span>
+              <div className="space-y-6 mb-8">
+                <div className="flex justify-between text-gray-700 py-2">
+                  <span className="text-lg">Items ({getTotalItems()})</span>
+                  <span className="font-bold text-lg">₹{getTotalPrice().toFixed(2)}</span>
                 </div>
 
-                <div className="flex justify-between text-gray-700">
-                  <span>Taxes & Charges</span>
-                  <span className="font-semibold">₹{(getTotalPrice() * 0.05).toFixed(2)}</span>
+                <div className="flex justify-between text-gray-700 py-2">
+                  <span className="text-lg">Taxes & Charges</span>
+                  <span className="font-bold text-lg">₹{(getTotalPrice() * 0.05).toFixed(2)}</span>
                 </div>
 
-                <div className="border-t-2 border-gray-200 pt-4">
-                  <div className="flex justify-between text-xl font-bold text-gray-900">
+                <div className="border-t-2 border-orange-200 pt-6">
+                  <div className="flex justify-between text-2xl font-bold text-gray-900">
                     <span>Total</span>
-                    <span className="text-red-600">
+                    <span className="text-orange-600">
                       ₹{(getTotalPrice() * 1.05).toFixed(2)}
                     </span>
                   </div>
@@ -206,20 +210,22 @@ export default function CartPage() {
 
               <button
                 onClick={handleCheckout}
-                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg transition-colors flex items-center justify-center gap-3 text-lg"
+                className="w-full btn-primary py-5 text-xl flex items-center justify-center gap-3 mb-6"
               >
                 Proceed to Checkout
-                <ArrowRight className="w-5 h-5" />
+                <ArrowRight className="w-6 h-6" />
               </button>
 
-              <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-sm text-green-800 text-center">
+              <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl mb-4">
+                <p className="text-green-800 text-center font-medium">
                   🎉 You're saving ₹{(getTotalPrice() * 0.1).toFixed(2)} on this order!
                 </p>
               </div>
 
-              <div className="mt-4 text-center text-sm text-gray-500">
-                <p>💳 We accept all payment methods</p>
+              <div className="text-center text-sm text-gray-500">
+                <p className="flex items-center justify-center gap-2">
+                  💳 We accept all payment methods
+                </p>
               </div>
             </div>
           </motion.div>

@@ -34,23 +34,27 @@ export default function Navbar() {
   const cartItemCount = getTotalItems();
 
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-md">
+    <nav className="sticky top-0 z-50 glass-effect backdrop-blur-lg border-b border-white/20">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="text-3xl">🍛</div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+              🍛
+            </div>
+            <span className="text-3xl font-display font-bold gradient-text">
               SwadSeva
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-8">
             <Link
               href="/"
-              className={`flex items-center gap-2 font-semibold transition-colors ${
-                pathname === '/' ? 'text-red-600' : 'text-gray-700 hover:text-red-600'
+              className={`flex items-center gap-2 font-semibold transition-all duration-300 ${
+                pathname === '/' 
+                  ? 'text-orange-600 scale-105' 
+                  : 'text-gray-700 hover:text-orange-600 hover:scale-105'
               }`}
             >
               <Home className="w-5 h-5" />
@@ -58,13 +62,13 @@ export default function Navbar() {
             </Link>
 
             {/* Mode Toggle */}
-            <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
+            <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm rounded-xl p-1 shadow-lg border border-white/20">
               <button
                 onClick={() => handleModeToggle('restaurant')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 ${
                   mode === 'restaurant'
-                    ? 'bg-red-600 text-white'
-                    : 'text-gray-700 hover:text-red-600'
+                    ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg transform scale-105'
+                    : 'text-gray-700 hover:text-red-600 hover:bg-white/50'
                 }`}
               >
                 <Store className="w-4 h-4" />
@@ -72,10 +76,10 @@ export default function Navbar() {
               </button>
               <button
                 onClick={() => handleModeToggle('canteen')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${
+                className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300 ${
                   mode === 'canteen'
-                    ? 'bg-orange-500 text-white'
-                    : 'text-gray-700 hover:text-orange-500'
+                    ? 'bg-gradient-to-r from-orange-500 to-yellow-500 text-white shadow-lg transform scale-105'
+                    : 'text-gray-700 hover:text-orange-600 hover:bg-white/50'
                 }`}
               >
                 <UtensilsCrossed className="w-4 h-4" />
@@ -86,7 +90,7 @@ export default function Navbar() {
             {/* Cart Button */}
             <Link
               href="/cart"
-              className="relative flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+              className="relative flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
               <ShoppingCart className="w-5 h-5" />
               Cart
@@ -94,7 +98,7 @@ export default function Navbar() {
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-2 -right-2 bg-yellow-400 text-gray-900 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center"
+                  className="absolute -top-2 -right-2 bg-yellow-400 text-gray-900 text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
                 >
                   {cartItemCount}
                 </motion.span>
@@ -105,7 +109,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-gray-700 hover:text-red-600"
+            className="md:hidden p-2 rounded-xl bg-white/80 backdrop-blur-sm text-gray-700 hover:text-orange-600 hover:bg-white/90 transition-all duration-300 shadow-lg"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -118,30 +122,32 @@ export default function Navbar() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden overflow-hidden"
+              className="md:hidden overflow-hidden mt-4 rounded-2xl bg-white/90 backdrop-blur-lg border border-white/20 shadow-xl"
             >
-              <div className="py-4 space-y-4">
+              <div className="py-6 px-6 space-y-4">
                 <Link
                   href="/"
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-2 font-semibold py-2 ${
-                    pathname === '/' ? 'text-red-600' : 'text-gray-700'
+                  className={`flex items-center gap-3 font-semibold py-3 px-4 rounded-xl transition-all ${
+                    pathname === '/' 
+                      ? 'text-orange-600 bg-orange-50' 
+                      : 'text-gray-700 hover:text-orange-600 hover:bg-gray-50'
                   }`}
                 >
                   <Home className="w-5 h-5" />
                   Home
                 </Link>
 
-                <div className="space-y-2">
+                <div className="space-y-3">
                   <button
                     onClick={() => {
                       handleModeToggle('restaurant');
                       setMobileMenuOpen(false);
                     }}
-                    className={`flex items-center gap-2 w-full px-4 py-3 rounded-lg font-semibold ${
+                    className={`flex items-center gap-3 w-full px-4 py-4 rounded-xl font-semibold transition-all ${
                       mode === 'restaurant'
-                        ? 'bg-red-600 text-white'
-                        : 'bg-gray-100 text-gray-700'
+                        ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     <Store className="w-5 h-5" />
@@ -152,10 +158,10 @@ export default function Navbar() {
                       handleModeToggle('canteen');
                       setMobileMenuOpen(false);
                     }}
-                    className={`flex items-center gap-2 w-full px-4 py-3 rounded-lg font-semibold ${
+                    className={`flex items-center gap-3 w-full px-4 py-4 rounded-xl font-semibold transition-all ${
                       mode === 'canteen'
-                        ? 'bg-orange-500 text-white'
-                        : 'bg-gray-100 text-gray-700'
+                        ? 'bg-gradient-to-r from-orange-500 to-yellow-500 text-white shadow-lg'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     <UtensilsCrossed className="w-5 h-5" />
@@ -166,14 +172,14 @@ export default function Navbar() {
                 <Link
                   href="/cart"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between bg-red-600 text-white font-semibold px-4 py-3 rounded-lg"
+                  className="flex items-center justify-between bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold px-4 py-4 rounded-xl shadow-lg"
                 >
-                  <span className="flex items-center gap-2">
+                  <span className="flex items-center gap-3">
                     <ShoppingCart className="w-5 h-5" />
                     Cart
                   </span>
                   {cartItemCount > 0 && (
-                    <span className="bg-yellow-400 text-gray-900 text-sm font-bold px-2 py-1 rounded-full">
+                    <span className="bg-yellow-400 text-gray-900 text-sm font-bold px-3 py-1 rounded-full shadow-md">
                       {cartItemCount}
                     </span>
                   )}
