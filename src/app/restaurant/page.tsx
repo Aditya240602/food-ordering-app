@@ -1,7 +1,7 @@
 // src/app/restaurant/page.tsx
 
 'use client';
-
+import { ChevronRight } from 'lucide-react'
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
