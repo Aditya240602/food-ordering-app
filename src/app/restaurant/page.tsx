@@ -71,10 +71,10 @@ export default function RestaurantListPage() {
               <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Star className="w-10 h-10 text-yellow-300" />
               </div>
-              <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">
+              <h1 className="text-display-large font-display font-bold mb-6">
                 Discover <span className="text-yellow-300">Indian</span> Restaurants
               </h1>
-              <p className="text-orange-100 text-xl max-w-2xl mx-auto">
+              <p className="text-body-elegant text-orange-100 max-w-2xl mx-auto">
                 Choose from our curated selection of authentic Indian cuisine from top-rated restaurants
               </p>
             </motion.div>
@@ -116,7 +116,7 @@ export default function RestaurantListPage() {
 
                 {/* Restaurant Info */}
                 <div className="p-8">
-                  <h2 className="text-2xl font-display font-bold text-gray-900 mb-4">
+                  <h2 className="text-heading-elegant font-elegant font-bold text-gray-900 mb-4">
                     {restaurant.name}
                   </h2>
 

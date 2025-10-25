@@ -42,7 +42,7 @@ export default function Navbar() {
             <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-500 rounded-xl flex items-center justify-center text-2xl shadow-lg">
               🍛
             </div>
-            <span className="text-3xl font-display font-bold gradient-text">
+            <span className="text-3xl font-display font-bold gradient-text tracking-tight">
               SwadSeva
             </span>
           </Link>
@@ -51,7 +51,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-8">
             <Link
               href="/"
-              className={`flex items-center gap-2 font-semibold transition-all duration-300 ${
+              className={`flex items-center gap-2 font-modern font-semibold transition-all duration-300 ${
                 pathname === '/' 
                   ? 'text-orange-600 scale-105' 
                   : 'text-gray-700 hover:text-orange-600 hover:scale-105'
@@ -72,7 +72,7 @@ export default function Navbar() {
                 }`}
               >
                 <Store className="w-4 h-4" />
-                <span className="font-semibold">Restaurants</span>
+                <span className="font-modern font-semibold">Restaurants</span>
               </button>
               <button
                 onClick={() => handleModeToggle('canteen')}
@@ -83,14 +83,14 @@ export default function Navbar() {
                 }`}
               >
                 <UtensilsCrossed className="w-4 h-4" />
-                <span className="font-semibold">Canteen</span>
+                <span className="font-modern font-semibold">Canteen</span>
               </button>
             </div>
 
             {/* Cart Button */}
             <Link
               href="/cart"
-              className="relative flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              className="relative flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-modern font-semibold px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
               <ShoppingCart className="w-5 h-5" />
               Cart

@@ -149,9 +149,9 @@ export default function RestaurantMenuPage() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-5xl font-bold mb-2">{restaurant.name}</h1>
+                <h1 className="text-display-large font-display font-bold mb-2">{restaurant.name}</h1>
                 {restaurant.cuisine_type && (
-                  <p className="text-xl text-red-100 mb-2">🍛 {restaurant.cuisine_type}</p>
+                  <p className="text-body-elegant text-red-100 mb-2">🍛 {restaurant.cuisine_type}</p>
                 )}
                 {restaurant.address && (
                   <p className="text-red-100 flex items-center gap-2 mb-2">
@@ -185,7 +185,7 @@ export default function RestaurantMenuPage() {
             transition={{ delay: categoryIndex * 0.1 }}
             className="mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-red-200 pb-2">
+            <h2 className="text-heading-elegant font-elegant font-bold text-gray-900 mb-6 border-b-2 border-red-200 pb-2">
               {category}
             </h2>
 
@@ -205,7 +205,7 @@ export default function RestaurantMenuPage() {
                   </div>
 
                   <div className="p-5">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-heading-elegant font-elegant font-bold text-gray-900 mb-2">
                       {item.name}
                     </h3>
                     

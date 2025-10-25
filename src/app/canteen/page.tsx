@@ -123,11 +123,11 @@ export default function CanteenPage() {
                   className="w-16 h-16 rounded-xl object-cover"
                 />
               </div>
-              <h1 className="text-5xl md:text-6xl font-display font-bold mb-4">NSUT Canteen</h1>
-              <p className="text-xl text-orange-100 mb-4">
+              <h1 className="text-display-large font-display font-bold mb-4">NSUT Canteen</h1>
+              <p className="text-body-elegant text-orange-100 mb-4">
                 Quick Bites, Great Taste!
               </p>
-              <p className="text-orange-100 mb-6">
+              <p className="text-body-friendly text-orange-100 mb-6">
                 🕐 Open 8:00 AM - 6:00 PM | 📍 NSUT Campus, Dwarka
               </p>
               <div className="inline-block glass-effect-light px-6 py-3 rounded-full">
@@ -149,7 +149,7 @@ export default function CanteenPage() {
           >
             <div className="flex items-center gap-3 mb-6">
               <Utensils className="w-8 h-8 text-orange-400" />
-              <h2 className="text-4xl font-display font-bold text-white">Snacks</h2>
+              <h2 className="text-heading-elegant font-elegant font-bold text-white">Snacks</h2>
             </div>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -173,7 +173,7 @@ export default function CanteenPage() {
                   </div>
 
                   <div className="p-4">
-                    <h3 className="text-lg font-bold text-white mb-1">
+                    <h3 className="text-heading-elegant font-elegant font-bold text-white mb-1">
                       {item.name}
                     </h3>
                     
@@ -242,7 +242,7 @@ export default function CanteenPage() {
           >
             <div className="flex items-center gap-3 mb-6">
               <Coffee className="w-8 h-8 text-orange-600" />
-              <h2 className="text-4xl font-bold text-gray-900">Beverages</h2>
+              <h2 className="text-heading-elegant font-elegant font-bold text-gray-900">Beverages</h2>
             </div>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -261,7 +261,7 @@ export default function CanteenPage() {
                   </div>
 
                   <div className="p-4">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
+                    <h3 className="text-heading-elegant font-elegant font-bold text-gray-900 mb-1">
                       {item.name}
                     </h3>
                     

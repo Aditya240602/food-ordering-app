@@ -4,7 +4,7 @@
 
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, ArrowLeft, Coffee, Utensils } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import toast from 'react-hot-toast';
 
@@ -46,10 +46,10 @@ export default function CartPage() {
           <div className="w-32 h-32 bg-gradient-to-br from-orange-400 to-red-400 rounded-full flex items-center justify-center text-6xl mx-auto mb-8 animate-float">
             🛒
           </div>
-          <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">
+          <h2 className="text-display-medium font-display font-bold text-gray-800 mb-4">
             Your Cart is Empty
           </h2>
-          <p className="text-gray-600 mb-8 text-lg">
+          <p className="text-body-elegant text-gray-600 mb-8">
             Add some delicious items to get started on your culinary journey!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -92,11 +92,11 @@ export default function CartPage() {
           
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-5xl font-display font-bold gradient-text mb-3">
+              <h1 className="text-display-large font-display font-bold gradient-text mb-3">
                 Your Cart
               </h1>
-              <p className="text-gray-600 text-lg">
-                Ordering from <span className="font-semibold text-orange-600">{restaurantName}</span>
+              <p className="text-body-elegant text-gray-600">
+                Ordering from <span className="font-elegant font-semibold text-orange-600">{restaurantName}</span>
               </p>
             </div>
             
@@ -129,7 +129,7 @@ export default function CartPage() {
 
                   {/* Item Details */}
                   <div className="flex-1">
-                    <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">
+                    <h3 className="text-heading-elegant font-elegant font-bold text-gray-900 mb-2">
                       {item.name}
                     </h3>
                     {item.category && (
@@ -183,7 +183,7 @@ export default function CartPage() {
             className="lg:col-span-1"
           >
             <div className="bg-white rounded-2xl shadow-xl p-8 sticky top-8 border border-white/20">
-              <h2 className="text-3xl font-display font-bold text-gray-900 mb-8">
+              <h2 className="text-heading-elegant font-elegant font-bold text-gray-900 mb-8">
                 Order Summary
               </h2>
 

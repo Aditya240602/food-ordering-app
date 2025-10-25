@@ -109,7 +109,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-5xl md:text-7xl font-display font-bold mb-6"
+                className="text-display-large font-display font-bold mb-6"
               >
                 <span className="gradient-text">Delicious</span>
                 <br />
@@ -122,7 +122,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-xl text-gray-300 mb-8 max-w-lg"
+                className="text-body-elegant text-gray-300 mb-8 max-w-lg"
               >
                 Experience the taste of authentic Indian cuisine delivered right to your doorstep. 
                 From spicy curries to sweet desserts, we've got it all!
@@ -247,10 +247,10 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+            <h2 className="text-display-medium font-display font-bold mb-6">
               Why Choose <span className="gradient-text">SwadSeva</span>?
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-body-elegant text-gray-300 max-w-2xl mx-auto">
               We're committed to providing you with the best food delivery experience possible.
             </p>
           </motion.div>
@@ -268,10 +268,10 @@ export default function HomePage() {
                 <div className="w-16 h-16 gradient-bg-food rounded-2xl flex items-center justify-center text-white mb-6">
                   {feature.icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-heading-elegant font-elegant font-bold text-white mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-body-friendly text-gray-300 leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>
@@ -289,10 +289,10 @@ export default function HomePage() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
+            <h2 className="text-display-medium font-display font-bold mb-6">
               Featured <span className="gradient-text">Restaurants</span>
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-body-elegant text-gray-300 max-w-2xl mx-auto">
               Discover our top-rated restaurants serving authentic Indian cuisine
             </p>
           </motion.div>
@@ -338,7 +338,7 @@ export default function HomePage() {
               </div>
 
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-white mb-2">
+                <h3 className="text-heading-elegant font-elegant font-bold text-white mb-2">
                   {restaurant.name}
                 </h3>
                 
@@ -393,10 +393,10 @@ export default function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+            <h2 className="text-display-medium font-display font-bold text-white mb-6">
               Ready to Order?
             </h2>
-            <p className="text-xl text-orange-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-body-elegant text-orange-100 mb-8 max-w-2xl mx-auto">
               Join thousands of satisfied customers who trust SwadSeva for their food delivery needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
